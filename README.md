@@ -1,6 +1,6 @@
 # Ndhash
 
-Creates n-dimension hashes
+N-dimension hash creation and utilities. Good for testing multi-level hash and JSON processing.
 
 ## Installation
 
@@ -20,9 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
 require 'ndhash'
 
-NDHash.generate(level:3, entries_per_level:2, pointers_per_level:1)
+# Generate hash with custom number of levels, number of key-value pairs and hashes per level
+NDHash.generate(levels:2, values_per_level:2, hashes_per_level:2)
+# =>
+```
+```json
+{"level_1_key_1":"level_1_value_1","level_1_key_2":"level_1_value_2","level_1_pointer_1":{"level_2_key_1":"level_2_value_1","level_2_key_2":"level_2_value_2"},"level_1_pointer_2":{"level_2_key_1":"level_2_value_1","level_2_key_2":"level_2_value_2"}}
+
+```ruby
+# Count number of nested levels per hash
+NDHash.count_levels({key:{}}})
+# => 2
+```
 
 ## Development
 

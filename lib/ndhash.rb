@@ -3,8 +3,10 @@ require "ndhash/version"
 module NDHash
   module_function
 
-  def generate(level:, entries_per_level:2, pointers_per_level:1)
-    generate_rec(1, level, entries_per_level, pointers_per_level)
+  def generate(levels:, values_per_level:2, hashes_per_level:1)
+    raise ArgumentError, 'Negative or zero value given' if levels < 1 or values_per_level < 0 or hashes_per_level < 0
+    raise ArgumentError, 'Less than 1 number of pointers defined for multi-level hash' if levels > 1 and hashes_per_level < 1
+    generate_rec(1, levels, values_per_level, hashes_per_level)
   end
 
   def generate_rec(current_level, max_level, entries_per_level, pointers_per_level)
@@ -38,5 +40,20 @@ module NDHash
 
   def get_pointer_key(level, entry_num:)
     "level_#{level}_pointer_#{entry_num}"
+  end
+
+  def count_levels(hash)
+    count_levels_rec(1, hash)
+  end
+
+  def count_levels_rec(levels, hash)
+    hash.each do |k, v|
+      if Hash === v
+        levels = count_levels_rec(levels+1, v)
+      else
+        return levels
+      end
+    end
+    levels
   end
 end
