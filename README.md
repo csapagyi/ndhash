@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 # Ndhash
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ndhash`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Creates n-dimension hashes
 
 ## Installation
 
@@ -23,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+require 'ndhash'
+
+NDHash.generate(level:3, entries_per_level:2, pointers_per_level:1)
 
 ## Development
 
@@ -39,7 +38,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-=======
-# ndhash
->>>>>>> e7f09bd6c37b88a9679cf4efa9c1d2239733572b
