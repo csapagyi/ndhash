@@ -1,6 +1,6 @@
 # Ndhash
 
-N-dimension hash creation and utilities. Good for testing multi-level hash and JSON processing.
+N-dimension hash creation and utilities. Useful for testing multi-level hash and JSON processing.
 
 ## Installation
 
@@ -43,10 +43,23 @@ NDHash.generate(levels:2, values_per_level:2, hashes_per_level:2)
 ```
 
 ```ruby
+NDHash.generate(levels:2, values_per_level:0, hashes_per_level:2)
+```
+
+```json
+{
+    "level_1_pointer_1": {},
+    "level_1_pointer_2": {}
+}
+```
+
+```ruby
 # Count number of nested levels per hash
 NDHash.count_levels({key:{}}})
 # => 2
 ```
+
+Check the unit tests for more examples.
 
 ## Development
 
@@ -56,7 +69,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ndhash. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/csapagyi/ndhash. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
