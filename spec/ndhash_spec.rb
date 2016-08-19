@@ -9,6 +9,9 @@ describe NDHash do
       expect(NDHash.count_levels({hi: 'there'})).to eql(1)
       expect(NDHash.count_levels({hash: {}})).to eql(2)
       expect(NDHash.count_levels({many: {level: {hash: {}}}})).to eql(4)
+      expect(NDHash.count_levels({many: {level: {hash: {}, multiple_keys: {}}}})).to eql(4)
+      expect(NDHash.count_levels({many: {level: {hash: {}, multiple: {keys:{}}}}})).to eql(5)
+      expect(NDHash.count_levels({many: {level: {hash: {}, multiple_keys: {key: 'value'}}}})).to eql(4)
     end
 
   end

@@ -46,14 +46,13 @@ module NDHash
     count_levels_rec(1, hash)
   end
 
-  def count_levels_rec(levels, hash)
-    hash.each do |k, v|
+  def count_levels_rec(current_level, hash)
+    max_level = current_level
+    hash.each_value do |v|
       if Hash === v
-        levels = count_levels_rec(levels+1, v)
-      else
-        return levels
+        max_level = [count_levels_rec(current_level+1, v), current_level].max
       end
     end
-    levels
+    max_level
   end
 end
